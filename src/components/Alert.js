@@ -21,7 +21,7 @@ export default class Alert extends Component {
           </a>{" "}
           for making this website possible.
           <button
-            type="button"
+            type="button" 
             className="close"
             data-dismiss="alert"
             aria-label="Close"

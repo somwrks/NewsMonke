@@ -9,9 +9,7 @@ export class NavBar extends Component {
         <nav
           className={`navbar sticky navbar-expand-lg navbar-${
             mode === "dark" ? "dark" : "light"
-          } bg-${
-            mode === "dark" ? "black" : "white"
-          }`}
+          } bg-${mode === "dark" ? "black" : "white"}`}
         >
           <div className="container-fluid">
             <Link className="navbar-brand" to="/general">
@@ -63,12 +61,13 @@ export class NavBar extends Component {
                     Science
                   </Link>
                 </li>
-                
-                
-                  {/* the method this gonna call */}
-                  <i className="fa-regular fa-moon mt-2 ml-4 float-right " style={{fontSize:"20px", cursor:"pointer"}} onClick={toggleMode}>
-                  </i>
 
+                {/* the method this gonna call */}
+                <i
+                  className="fa-regular fa-moon mt-2 ml-4 float-right "
+                  style={{ fontSize: "20px", cursor: "pointer" }}
+                  onClick={toggleMode}
+                ></i>
               </ul>
             </div>
           </div>

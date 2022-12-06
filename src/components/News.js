@@ -23,22 +23,26 @@ export class News extends Component {
       this.props.category.charAt(0).toUpperCase() +
       this.props.category.substring(1);
   }
- 
-
 
   async componentDidMount() {
     this.fetchMoreData();
   }
 
   fetchMoreData = async () => {
+    this.props.setProgress(10);
     this.setState({ page: this.state.page + 1 });
-    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=47e48e2d7de9438fad48d458785bdf28&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
     let data = await fetch(url);
+    this.setState({ loading: true });
+    this.props.setProgress(50);
     let parsedData = await data.json();
+    this.props.setProgress(70);
     this.setState({
       articles: this.state.articles.concat(parsedData.articles),
       totalResults: parsedData.totalResults,
+      loading: false,
     });
+    this.props.setProgress(100);
   };
 
   render() {
@@ -51,12 +55,12 @@ export class News extends Component {
             : this.props.category.charAt(0).toUpperCase() +
               this.props.category.substring(1)}
         </h1>
-        {this.state.articles.loading && <Spinner/>}
+        {this.state.articles.loading && <Spinner />}
         <InfiniteScroll
           dataLength={this.state.articles.length}
           next={this.fetchMoreData}
           hasMore={this.state.articles.length !== this.state.totalResults}
-          loader={<Spinner/>}
+          loader={<Spinner />}
         >
           <div className="container ">
             <div className="row">

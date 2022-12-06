@@ -5,9 +5,8 @@ export class NewsItem extends Component {
     let { title, description, imageurl, newsurl, mode, author, date, source } =
       this.props;
 
-
     return (
-      <div className="my-3" >
+      <div className="my-3">
         <div
           className={`card text-${mode === "dark" ? "light" : "dark"} bg-${
             mode === "dark" ? "dark" : "light"
@@ -17,6 +16,12 @@ export class NewsItem extends Component {
           <span
             className="position-aboslute top-0 top-0 translate middle badge rounder-pill
              bg-danger"
+            style={{
+              display: "flex",
+              justifyContent: "flex-end",
+              position: "absolute",
+              right: "0",
+            }}
             id="source"
           >
             {source}
