@@ -1,1 +1,1 @@
-Error: The website wont work as it's made using newsapi which restricts the api usage outside private local host domain.
+NewsMonke is a News website made using React, Bootstrap and NewsAPI. It has the functionality of fetching news from the api link served by newsapi based on the different categories on selection.
